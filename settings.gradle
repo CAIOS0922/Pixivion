@@ -1,0 +1,3 @@
+rootProject.name = "Pixivion"
+include ':app'
+include ':app:K-Pixiv'
