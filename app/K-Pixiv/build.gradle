@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.library'
-    id 'org.jetbrains.kotlin.plugin.serialization' version '1.6.20'
     id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.6.21'
 }
 
 android {
@@ -41,6 +41,7 @@ dependencies {
 
     implementation 'com.github.kittinunf.fuel:fuel:2.3.1'
     implementation 'com.github.kittinunf.fuel:fuel-android:2.3.1'
+    implementation 'com.github.kittinunf.fuel:fuel-coroutines:2.3.1'
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.2'
 
     implementation 'androidx.core:core-ktx:1.7.0'

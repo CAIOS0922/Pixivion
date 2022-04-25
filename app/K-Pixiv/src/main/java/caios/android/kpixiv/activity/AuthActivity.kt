@@ -16,7 +16,7 @@ import kotlin.coroutines.CoroutineContext
 class AuthActivity : AppCompatActivity(), CoroutineScope {
 
     private val binding by lazy { ActivityAuthBinding.inflate(layoutInflater) }
-    private val pixiv by lazy { KPixiv.getInstance() }
+    private val pixiv by lazy { KPixiv.getInstance(this) }
 
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Default
