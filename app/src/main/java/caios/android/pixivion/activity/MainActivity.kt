@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import caios.android.kpixiv.activity.AuthActivity
+import caios.android.kpixiv.data.Restrict
 import caios.android.pixivion.R
 import caios.android.pixivion.global.pixiv
 import caios.android.pixivion.utils.LogUtils.TAG
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                 ToastUtils.show(this, "Hello ${account?.name}")
 
                 launch {
-                    val json = pixiv.apiClient.getUserDetails(58290317)
+                    val json = pixiv.apiClient.getFollowingUsers(41218579, Restrict.Public)
                     Log.d(TAG, "onCreate: $json")
                 }
             } else {
