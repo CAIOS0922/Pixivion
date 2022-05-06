@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Pixivion</string>
+    <string name="loginSuccess">ログインしました</string>
+    <string name="loginFailed">ログインできませんでした</string>
 </resources>

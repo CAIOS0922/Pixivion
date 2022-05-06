@@ -2,42 +2,43 @@ package caios.android.pixivion.activity
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
-import caios.android.kpixiv.activity.AuthActivity
-import caios.android.kpixiv.data.Restrict
+import androidx.appcompat.app.AppCompatActivity
 import caios.android.pixivion.R
-import caios.android.pixivion.global.pixiv
-import caios.android.pixivion.utils.LogUtils.TAG
+import caios.android.pixivion.databinding.ActivityMainBinding
 import caios.android.pixivion.utils.ToastUtils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 class MainActivity : AppCompatActivity(), CoroutineScope {
+
+    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Default
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
 
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if(result.resultCode == Activity.RESULT_OK) {
-                val account = pixiv.currentAccount
-                ToastUtils.show(this, "Hello ${account?.name}")
-
-                launch {
-                    val json = pixiv.apiClient.getFollowingUsers(41218579, Restrict.Public)
-                    Log.d(TAG, "onCreate: $json")
-                }
+                ToastUtils.show(this, R.string.loginSuccess)
             } else {
-                ToastUtils.show(this, "Login failed.")
+                ToastUtils.show(this, R.string.loginFailed)
             }
-        }.launch(Intent(this, AuthActivity::class.java))
+        }.launch(Intent(this, LoginActivity::class.java))
+
+        /*if(!pixiv.authClient.isInitialized()) {
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if(result.resultCode == Activity.RESULT_OK) {
+                    ToastUtils.show(this, R.string.loginSuccess)
+                } else {
+                    ToastUtils.show(this, R.string.loginFailed)
+                }
+            }.launch(Intent(this, LoginActivity::class.java))
+        }*/
     }
 }
