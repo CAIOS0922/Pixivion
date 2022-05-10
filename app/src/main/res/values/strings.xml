@@ -2,4 +2,11 @@
     <string name="app_name">Pixivion</string>
     <string name="loginSuccess">ログインしました</string>
     <string name="loginFailed">ログインできませんでした</string>
+    <string name="home">ホーム</string>
+    <string name="trend">トレンド</string>
+    <string name="user">ユーザー</string>
+    <string name="newlyArrived">新着</string>
+    <string name="searchIllust">イラストを検索</string>
+    <string name="setting">設定</string>
+    <string name="aboutApp">アプリについて</string>
 </resources>

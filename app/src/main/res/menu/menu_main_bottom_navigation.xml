@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/as_home"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/trendFragment"
+        android:icon="@drawable/as_trend"
+        android:title="@string/trend" />
+    <item
+        android:id="@+id/newlyFragment"
+        android:icon="@drawable/as_notify"
+        android:title="@string/newlyArrived" />
+    <item
+        android:id="@+id/userFragment"
+        android:icon="@drawable/as_user"
+        android:title="@string/user" />
+</menu>
