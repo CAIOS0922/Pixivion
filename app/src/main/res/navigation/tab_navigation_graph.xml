@@ -6,16 +6,31 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="caios.android.holosche.fragment.HomeFragment"
+        android:name="caios.android.pixivion.fragment.HomeFragment"
         android:label="HomeFragment" />
     <fragment
-        android:id="@+id/reservedFragment"
-        android:name="caios.android.holosche.fragment.ReservedFragment"
-        android:label="ReservedFragment" />
+        android:id="@+id/trendFragment"
+        android:name="caios.android.pixivion.fragment.TrendFragment"
+        android:label="TrendFragment" />
+    <fragment
+        android:id="@+id/newlyFragment"
+        android:name="caios.android.pixivion.fragment.NewlyFragment"
+        android:label="NewlyFragment" />
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="caios.android.pixivion.fragment.UserFragment"
+        android:label="UserFragment" />
+
     <action
         android:id="@+id/action_global_homeFragment"
         app:destination="@id/homeFragment" />
     <action
-        android:id="@+id/action_global_reservedFragment"
-        app:destination="@id/reservedFragment" />
+        android:id="@+id/action_global_trendFragment"
+        app:destination="@id/trendFragment" />
+    <action
+        android:id="@+id/action_global_newlyFragment"
+        app:destination="@id/newlyFragment" />
+    <action
+        android:id="@+id/action_global_userFragment"
+        app:destination="@id/userFragment" />
 </navigation>

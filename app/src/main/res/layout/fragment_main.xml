@@ -121,13 +121,6 @@
                         android:textColor="@color/colorSecondaryText"
                         android:textSize="18sp"
                         android:transitionName="searchText" />
-
-                    <!--<androidx.mediarouter.app.MediaRouteButton
-                        android:id="@+id/mediaRouteButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:mediaRouteTypes="user" />-->
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -140,11 +133,12 @@
             android:background="@color/colorShadowLight" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <androidx.fragment.app.FragmentContainerView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:defaultNavHost="true"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:navGraph="@navigation/tab_navigation_graph" />
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/drawerNavigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/colorPrimaryBackground"
+        app:menu="@menu/menu_main_drawer_navigation" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

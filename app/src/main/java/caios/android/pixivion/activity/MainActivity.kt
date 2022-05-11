@@ -7,6 +7,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import caios.android.pixivion.R
 import caios.android.pixivion.databinding.ActivityMainBinding
+import caios.android.pixivion.global.pixiv
+import caios.android.pixivion.utils.ThemeUtils
 import caios.android.pixivion.utils.ToastUtils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -23,15 +25,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if(result.resultCode == Activity.RESULT_OK) {
-                ToastUtils.show(this, R.string.loginSuccess)
-            } else {
-                ToastUtils.show(this, R.string.loginFailed)
-            }
-        }.launch(Intent(this, LoginActivity::class.java))
-
-        /*if(!pixiv.authClient.isInitialized()) {
+        if(!pixiv.authClient.isInitialized()) {
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                 if(result.resultCode == Activity.RESULT_OK) {
                     ToastUtils.show(this, R.string.loginSuccess)
@@ -39,6 +33,13 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                     ToastUtils.show(this, R.string.loginFailed)
                 }
             }.launch(Intent(this, LoginActivity::class.java))
-        }*/
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        ThemeUtils.setFullScreen(window)
+        ThemeUtils.setThemeIcon(this, window)
     }
 }

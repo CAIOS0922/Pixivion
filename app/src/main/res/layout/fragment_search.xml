@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLibraryBackground"
+    android:clickable="true"
+    android:elevation="4dp"
+    android:focusable="true"
+    android:transitionName="searchBar">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryBackground">
+
+        <LinearLayout
+            android:id="@+id/toolbarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="16dp">
+
+            <ImageView
+                android:id="@+id/navigationIcon"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginEnd="12dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/av_drawer_to_arrow"
+                android:transitionName="navigationIcon" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/SearchTextInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                app:boxStrokeColor="@color/colorPrimaryBackground"
+                app:boxStrokeWidth="0dp"
+                app:hintEnabled="false">
+
+                <AutoCompleteTextView
+                    android:id="@+id/searchTextInputEditText"
+                    style="@style/Widget.MaterialComponents.AutoCompleteTextView.FilledBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:cursorVisible="true"
+                    android:hint="@string/searchIllust"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingStart="0dp"
+                    android:paddingTop="0dp"
+                    android:paddingEnd="0dp"
+                    android:paddingBottom="0dp"
+                    android:textColorHint="@color/colorSecondaryText"
+                    android:textCursorDrawable="@drawable/shape_cursor_color"
+                    android:textSize="18sp"
+                    android:transitionName="searchText" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/clearButton"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="12dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                app:srcCompat="@drawable/vec_close"
+                app:tint="@color/colorIcon" />
+        </LinearLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
