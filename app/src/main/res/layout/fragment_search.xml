@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorLibraryBackground"
+    android:background="@color/colorPrimaryBackground"
     android:clickable="true"
     android:elevation="4dp"
     android:focusable="true"
@@ -13,6 +13,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryBackground">
+
+        <Space
+            android:id="@+id/statusBarSpace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:id="@+id/toolbarLayout"
@@ -31,8 +36,7 @@
                 android:layout_height="26dp"
                 android:layout_marginEnd="12dp"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/av_drawer_to_arrow"
-                android:transitionName="navigationIcon" />
+                android:src="@drawable/av_drawer_to_arrow" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/SearchTextInputLayout"
@@ -60,8 +64,7 @@
                     android:paddingBottom="0dp"
                     android:textColorHint="@color/colorSecondaryText"
                     android:textCursorDrawable="@drawable/shape_cursor_color"
-                    android:textSize="18sp"
-                    android:transitionName="searchText" />
+                    android:textSize="18sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <ImageView

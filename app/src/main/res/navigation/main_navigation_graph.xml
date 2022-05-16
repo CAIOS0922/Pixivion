@@ -11,7 +11,11 @@
     <fragment
         android:id="@+id/searchFragment"
         android:name="caios.android.pixivion.fragment.SearchFragment"
-        android:label="SearchFragment" />
+        android:label="SearchFragment">
+        <argument
+            app:argType="boolean"
+            android:name="isSharedElement" />
+    </fragment>
     <action
         android:id="@+id/action_global_searchFragment"
         app:destination="@id/searchFragment" />

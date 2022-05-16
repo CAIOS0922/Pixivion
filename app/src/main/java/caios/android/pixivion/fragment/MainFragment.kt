@@ -17,6 +17,9 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
+import androidx.transition.Fade
 import caios.android.pixivion.R
 import caios.android.pixivion.databinding.FragmentMainBinding
 import caios.android.pixivion.model.MainViewModel
@@ -32,6 +35,12 @@ class MainFragment: Fragment(R.layout.fragment_main), NavigationView.OnNavigatio
 
     private var isShouldAnimateNavigationIcon = true
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        reenterTransition = Fade()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding = FragmentMainBinding.bind(view)
 
@@ -44,7 +53,10 @@ class MainFragment: Fragment(R.layout.fragment_main), NavigationView.OnNavigatio
         }
 
         binding.searchBar.setOnClickListener {
-
+            findNavController().navigate(
+                MainFragmentDirections.actionGlobalSearchFragment(true),
+                FragmentNavigatorExtras(binding.searchBar to binding.searchBar.transitionName)
+            )
         }
 
         binding.bottomNavigationView.setOnItemSelectedListener {
@@ -52,6 +64,12 @@ class MainFragment: Fragment(R.layout.fragment_main), NavigationView.OnNavigatio
             return@setOnItemSelectedListener true
         }
 
+        binding.appbarLayout.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                binding.appbarLayout.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                mainModel.searchBarHeight.value = binding.appbarLayout.height
+            }
+        })
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, insets ->
             val systemBarInsets = SystemUtils.getSystemBarInsets(insets)
@@ -67,17 +85,6 @@ class MainFragment: Fragment(R.layout.fragment_main), NavigationView.OnNavigatio
 
             return@setOnApplyWindowInsetsListener insets
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        binding.appbarLayout.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
-            override fun onGlobalLayout() {
-                binding.appbarLayout.viewTreeObserver.removeOnGlobalLayoutListener(this)
-                mainModel.searchBarHeight.value = binding.appbarLayout.height
-            }
-        })
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -154,5 +161,4 @@ class MainFragment: Fragment(R.layout.fragment_main), NavigationView.OnNavigatio
             (binding.navigationIcon.drawable as? Animatable)?.start()
         }
     }
-
 }
