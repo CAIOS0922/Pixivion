@@ -38,34 +38,45 @@
                 android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/av_drawer_to_arrow" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/SearchTextInputLayout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_weight="1"
-                app:boxStrokeColor="@color/colorPrimaryBackground"
-                app:boxStrokeWidth="0dp"
-                app:hintEnabled="false">
+                android:orientation="vertical">
 
-                <AutoCompleteTextView
-                    android:id="@+id/searchTextInputEditText"
-                    style="@style/Widget.MaterialComponents.AutoCompleteTextView.FilledBox"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/SearchTextInputLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:cursorVisible="true"
-                    android:hint="@string/searchIllust"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:paddingStart="0dp"
-                    android:paddingTop="0dp"
-                    android:paddingEnd="0dp"
-                    android:paddingBottom="0dp"
-                    android:textColorHint="@color/colorSecondaryText"
-                    android:textCursorDrawable="@drawable/shape_cursor_color"
-                    android:textSize="18sp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    app:boxStrokeColor="@color/colorPrimaryBackground"
+                    app:boxStrokeWidth="0dp"
+                    app:hintEnabled="false"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/searchTextInputEditText"
+                        style="@style/Widget.MaterialComponents.AutoCompleteTextView.FilledBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:cursorVisible="true"
+                        android:hint="@string/searchIllust"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:paddingStart="0dp"
+                        android:paddingTop="0dp"
+                        android:paddingEnd="0dp"
+                        android:paddingBottom="0dp"
+                        android:textColorHint="@color/colorSecondaryText"
+                        android:textCursorDrawable="@drawable/shape_cursor_color"
+                        android:textSize="18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageView
                 android:id="@+id/clearButton"
